@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data2Chart-Pro — Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #111827;
+      --surface2: #1a2235;
+      --border: #1e2d45;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --accent-glow: rgba(59,130,246,0.15);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 500px; height: 500px; background: rgba(59,130,246,0.08); top: -100px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(6,182,212,0.06); bottom: 10%; right: -80px; }
+
+    .wrapper { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    header { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; animation: fadeUp 0.7s ease both; }
+    .logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500; color: #fff;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3); flex-shrink: 0;
+    }
+    .app-name { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: #fff; }
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 5vw, 44px); font-weight: 400; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+    h1 em { font-style: italic; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { color: var(--muted2); font-size: 14px; }
+
+    nav { display: flex; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; animation: fadeUp 0.7s 0.1s ease both; }
+    nav a {
+      font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none;
+      padding: 7px 16px; border-radius: 6px; border: 1px solid var(--border);
+      color: var(--muted2); transition: all 0.2s;
+    }
+    nav a:hover, nav a.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 40px; animation: fadeUp 0.7s 0.2s ease both; position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+    }
+
+    .card-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .card-title { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; color: #fff; margin-bottom: 8px; }
+    .effective-date {
+      font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted);
+      margin-bottom: 36px; display: inline-block;
+      background: var(--surface2); padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border);
+    }
+
+    .section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .section-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 5px; }
+    .section h3 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; }
+    .section p { font-size: 14.5px; color: var(--muted2); line-height: 1.85; }
+    .section a { color: var(--accent); text-decoration: none; }
+    .section a:hover { text-decoration: underline; }
+
+    .highlight-box {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 8px;
+      padding: 14px 18px; margin-top: 14px; font-size: 13.5px; color: var(--muted2); font-style: italic;
+    }
+
+    footer { text-align: center; padding: 32px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+    footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+    footer span { color: var(--accent); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 500px) { .card { padding: 26px 20px; } }
+  </style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="wrapper">
+
+  <header>
+    <div class="logo-row">
+      <div class="logo-icon">D2</div>
+      <span class="app-name">Data2Chart-Pro</span>
+    </div>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="subtitle">How we handle your data — the short version: we don't collect any.</p>
+  </header>
+
+  <nav>
+    <a href="privacy-policy.html" class="active">Privacy Policy</a>
+    <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    <a href="support.html">Support</a>
+  </nav>
+
+  <div class="card">
+    <div class="card-label">Legal Document</div>
+    <div class="card-title">Privacy Policy</div>
+    <div class="effective-date">Effective Date: April 2026</div>
+
+    <div class="section">
+      <div class="section-num">§ 1</div>
+      <h3>Introduction</h3>
+      <p>Welcome to <strong>Data2Chart-Pro</strong> ("we," "our," or "us"). We are committed to protecting your privacy. This Privacy Policy explains how we handle your data when you use our application within the Canva platform.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">§ 2</div>
+      <h3>Data Collection and Usage</h3>
+      <p>Our application is designed with your privacy in mind. We do <strong>not</strong> collect, store, transmit, or share any personal information, uploaded files, CSV data, or chart content.</p>
+      <div class="highlight-box">
+        All data processing — including reading CSV files and generating charts — happens locally within your browser and the Canva editor environment. We do not have servers that intercept or store your data.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-num">§ 3</div>
+      <h3>Third-Party Services</h3>
+      <p>Because our app operates entirely within Canva, it is subject to Canva's own Privacy Policy. We do not integrate with external third-party tracking, analytics, or advertising services.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">§ 4</div>
+      <h3>Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Any changes will be reflected with a new "Effective Date" at the top of this page.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">§ 5</div>
+      <h3>Contact Us</h3>
+      <p>If you have any questions or concerns about this Privacy Policy, please contact us via the support link provided in our Canva App listing, or visit our <a href="support.html">Support page</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 <span>Data2Chart-Pro</span>. Built for Canva. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>

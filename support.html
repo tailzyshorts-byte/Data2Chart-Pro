@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data2Chart-Pro — Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #111827;
+      --surface2: #1a2235;
+      --border: #1e2d45;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --accent-glow: rgba(59,130,246,0.15);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      line-height: 1.75; min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none; z-index: 0;
+    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 500px; height: 500px; background: rgba(6,182,212,0.08); top: -80px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(59,130,246,0.06); bottom: 10%; left: -80px; }
+
+    .wrapper { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    header { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; animation: fadeUp 0.7s ease both; }
+    .logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500; color: #fff;
+      box-shadow: 0 0 20px rgba(59,130,246,0.3); flex-shrink: 0;
+    }
+    .app-name { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: #fff; }
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 5vw, 44px); font-weight: 400; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+    h1 em { font-style: italic; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { color: var(--muted2); font-size: 14px; }
+
+    nav { display: flex; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; animation: fadeUp 0.7s 0.1s ease both; }
+    nav a {
+      font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none;
+      padding: 7px 16px; border-radius: 6px; border: 1px solid var(--border);
+      color: var(--muted2); transition: all 0.2s;
+    }
+    nav a:hover, nav a.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+    /* URL Card */
+    .url-card {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.06));
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 16px; padding: 36px 40px;
+      position: relative; overflow: hidden;
+      margin-bottom: 28px; animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .url-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent2));
+    }
+
+    .section-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: #fff; margin-bottom: 14px; }
+
+    .url-box {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px; margin-top: 4px;
+    }
+    .url-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .url-text { font-family: 'DM Mono', monospace; font-size: 13.5px; color: var(--accent2); word-break: break-all; flex: 1; }
+    .copy-btn {
+      background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px;
+      padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .copy-btn:hover { background: rgba(59,130,246,0.25); }
+
+    /* Contact grid */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 28px; animation: fadeUp 0.7s 0.3s ease both;
+    }
+    @media (max-width: 540px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; position: relative; overflow: hidden; transition: border-color 0.2s;
+    }
+    .contact-card:hover { border-color: rgba(59,130,246,0.4); }
+    .contact-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .contact-card:hover::before { opacity: 1; }
+
+    .contact-emoji { font-size: 26px; margin-bottom: 12px; display: block; }
+    .contact-type { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .contact-value { font-size: 14px; color: var(--muted2); line-height: 1.6; }
+    .contact-value a { color: var(--accent); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
+
+    /* FAQ */
+    .faq-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 36px 40px; animation: fadeUp 0.7s 0.4s ease both; position: relative; overflow: hidden;
+    }
+    .faq-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+    }
+
+    .faq-item { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .faq-q { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+    .faq-q::before { content: 'Q'; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3); border-radius: 4px; padding: 2px 6px; flex-shrink: 0; margin-top: 2px; }
+    .faq-a { font-size: 14px; color: var(--muted2); padding-left: 32px; line-height: 1.8; }
+
+    footer { text-align: center; padding: 32px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+    footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+    footer span { color: var(--accent); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 500px) { .url-card, .faq-card { padding: 26px 20px; } }
+  </style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="wrapper">
+
+  <header>
+    <div class="logo-row">
+      <div class="logo-icon">D2</div>
+      <span class="app-name">Data2Chart-Pro</span>
+    </div>
+    <h1>Support &amp; <em>Help</em></h1>
+    <p class="subtitle">We're here to help. Reach us via any channel below.</p>
+  </header>
+
+  <nav>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    <a href="support.html" class="active">Support</a>
+  </nav>
+
+  <!-- Support URL -->
+  <div class="url-card">
+    <div class="section-label">Official Support URL</div>
+    <div class="section-title">Get Help with Data2Chart-Pro</div>
+    <p style="font-size:14px; color:var(--muted2); margin-bottom:20px;">Use the link below to access our support portal, submit a ticket, or browse help articles.</p>
+    <div class="url-box">
+      <div class="url-icon">🔗</div>
+      <span class="url-text" id="supportUrl">https://data2chartpro.support/help</span>
+      <button class="copy-btn" onclick="copyUrl()">Copy URL</button>
+    </div>
+  </div>
+
+  <!-- Contact Cards -->
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="contact-emoji">📧</span>
+      <div class="contact-type">Email Support</div>
+      <div class="contact-value"><a href="mailto:support@data2chartpro.com">support@data2chartpro.com</a></div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-emoji">🛒</span>
+      <div class="contact-type">Canva Marketplace</div>
+      <div class="contact-value">Use the support link on our Canva App listing page.</div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-emoji">⏱️</span>
+      <div class="contact-type">Response Time</div>
+      <div class="contact-value">Within 24–48 hours on business days.</div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-emoji">🐛</span>
+      <div class="contact-type">Bug Reports</div>
+      <div class="contact-value">Attach your CSV sample &amp; chart type for faster resolution.</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-card">
+    <div class="section-label">FAQ</div>
+    <div class="section-title" style="font-family:'DM Serif Display',serif; font-size:24px; color:#fff; margin-bottom:28px;">Frequently Asked Questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does Data2Chart-Pro store my CSV files?</div>
+      <div class="faq-a">No. All data processing happens locally inside your browser and Canva environment. We have no servers that receive or store your data.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why isn't my CSV being parsed correctly?</div>
+      <div class="faq-a">Make sure your CSV uses standard comma-separated formatting with a header row in the first line. Complex multi-header or merged-cell structures may not be supported. When contacting support, attach a sample of your CSV for faster help.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Who owns the charts I create?</div>
+      <div class="faq-a">You do. Charts generated by you using Data2Chart-Pro within Canva belong to you, subject to Canva's own licensing terms.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I report a bug or request a feature?</div>
+      <div class="faq-a">Email us at <a href="mailto:support@data2chartpro.com" style="color:var(--accent);">support@data2chartpro.com</a> or use the support link on our Canva App listing. Include as much detail as possible, including steps to reproduce the issue.</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 <span>Data2Chart-Pro</span>. Built for Canva. All rights reserved.</p>
+  </footer>
+
+</div>
+<script>
+  function copyUrl() {
+    const url = document.getElementById('supportUrl').textContent;
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy URL', 2000);
+    });
+  }
+</script>
+</body>
+</html>
